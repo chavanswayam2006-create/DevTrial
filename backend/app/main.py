@@ -79,6 +79,7 @@ class LabRunRequest(BaseModel):
 # ==============================================================================
 
 @app.get("/")
+@app.get("/health")
 @app.get("/api/health")
 def health_check() -> Dict[str, Any]:
     return {
@@ -89,6 +90,7 @@ def health_check() -> Dict[str, Any]:
     }
 
 
+@app.get("/curriculum")
 @app.get("/api/curriculum")
 def get_curriculum() -> Dict[str, Any]:
     return {
@@ -98,6 +100,7 @@ def get_curriculum() -> Dict[str, Any]:
     }
 
 
+@app.post("/route")
 @app.post("/api/route")
 def compute_route(req: RouteRequest) -> Dict[str, Any]:
     algo = req.algorithm.lower().strip()
@@ -218,11 +221,13 @@ LABS_METADATA = [
 ]
 
 
+@app.get("/labs")
 @app.get("/api/labs")
 def list_labs() -> List[Dict[str, Any]]:
     return LABS_METADATA
 
 
+@app.post("/labs/{lab_id}/run")
 @app.post("/api/labs/{lab_id}/run")
 def run_lab(lab_id: str, req: LabRunRequest) -> Dict[str, Any]:
     lid = lab_id.lower().replace("-", "_")

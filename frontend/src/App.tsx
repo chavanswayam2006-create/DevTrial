@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StudentProvider } from './context/StudentContext';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
@@ -9,13 +9,34 @@ import { AiLabsPage } from './pages/AiLabsPage';
 import { LabDetailPage } from './pages/LabDetailPage';
 import { ProgressSettingsPage } from './pages/ProgressSettingsPage';
 
+function parseHashRoute(): { path: string; param?: string } {
+  const hash = window.location.hash.replace(/^#\/?/, '');
+  if (!hash) return { path: 'dashboard' };
+  const parts = hash.split('/');
+  return { path: parts[0] || 'dashboard', param: parts[1] };
+}
+
 export function AppContent() {
-  const [currentPath, setCurrentPath] = useState<string>('dashboard');
-  const [currentParam, setCurrentParam] = useState<string | undefined>(undefined);
+  const [currentPath, setCurrentPath] = useState<string>(() => parseHashRoute().path);
+  const [currentParam, setCurrentParam] = useState<string | undefined>(() => parseHashRoute().param);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const { path, param } = parseHashRoute();
+      setCurrentPath(path);
+      setCurrentParam(param);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   const handleNavigate = (path: string, param?: string) => {
     setCurrentPath(path);
     setCurrentParam(param);
+    const newHash = param ? `#${path}/${param}` : `#${path}`;
+    if (window.location.hash !== newHash) {
+      window.location.hash = newHash;
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

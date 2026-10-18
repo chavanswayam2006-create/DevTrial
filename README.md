@@ -262,6 +262,61 @@ DevTrail/
 
 ---
 
+## 🚀 Vercel Multi-Service Deployment
+
+DevTrail AI is configured to deploy directly on [Vercel](https://vercel.com) as a single project with multiple services using `vercel.json`:
+
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "backend": {
+      "root": "backend",
+      "framework": "fastapi"
+    },
+    "frontend": {
+      "root": "frontend",
+      "framework": "vite"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "backend"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "frontend"
+      }
+    }
+  ]
+}
+```
+
+### How Multi-Service Routing Works on Vercel:
+1. **Frontend Service (`frontend/`):**
+   - Framework: `vite`
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+   - Serves the React 19 + TypeScript single-page application and static assets for all root paths `/(.*)`.
+   - Supports deep linking via URL hash (`#roadmap`, `#labs`, `#lab_detail/lab_04`, `#chapter/node_c`, `#progress`).
+
+2. **Backend Service (`backend/`):**
+   - Framework: `fastapi`
+   - Entry Point: `backend/api/index.py` & `backend/main.py`
+   - Serves all API requests arriving at `/api/(.*)`.
+   - Dual-route decorators support both `/api/<endpoint>` and `/<endpoint>` transparently.
+
+3. **Single Domain & Unified Networking:**
+   - Both services deploy under a single domain (e.g., `https://devtrail-ai.vercel.app`).
+   - The frontend uses relative URLs `/api/...` in production, eliminating CORS overhead and localhost hardcoding.
+   - Offline fallback remains active: if the backend server is ever unavailable, the frontend gracefully falls back to bundled client-side data and calculation engines.
+
+---
+
 ## 🔒 Privacy & Limitations
 - **Zero Paid APIs:** All algorithms run entirely on local CPU using standard Python modules. No cloud LLMs or API keys are required.
 - **Synthetic Data:** Student training sets and cluster archetypes are purely synthetic and designed for educational pedagogy.
