@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-variant": "#dae2fd", "error": "#ba1a1a", "on-error-container": "#93000a", "tertiary-container": "#885500", "surface-container-lowest": "#ffffff", "inverse-primary": "#c3c0ff", "on-secondary": "#ffffff", "surface-container-high": "#e2e7ff", "inverse-surface": "#283044", "primary": "#3525cd", "on-tertiary-container": "#ffd4a4", "on-primary-container": "#dad7ff", "on-error": "#ffffff", "outline": "#777587", "on-secondary-container": "#006f66", "tertiary": "#684000", "on-background": "#131b2e", "outline-variant": "#c7c4d8", "surface-container": "#eaedff", "surface-container-highest": "#dae2fd", "on-primary": "#ffffff", "surface-dim": "#d2d9f4", "on-tertiary-fixed": "#2a1700", "surface": "#faf8ff", "surface-bright": "#faf8ff", "tertiary-fixed": "#ffddb8", "secondary": "#006a61", "surface-container-low": "#f2f3ff", "on-primary-fixed-variant": "#3323cc", "on-surface-variant": "#464555", "primary-fixed-dim": "#c3c0ff", "on-tertiary-fixed-variant": "#653e00", "error-container": "#ffdad6", "primary-container": "#4f46e5", "primary-fixed": "#e2dfff", "on-secondary-fixed": "#00201d", "on-secondary-fixed-variant": "#005049", "secondary-container": "#86f2e4", "secondary-fixed-dim": "#6bd8cb", "on-surface": "#131b2e", "background": "#faf8ff", "on-primary-fixed": "#0f0069", "on-tertiary": "#ffffff", "surface-tint": "#4d44e3", "tertiary-fixed-dim": "#ffb95f", "inverse-on-surface": "#eef0ff", "secondary-fixed": "#89f5e7" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1.5rem", "space-xl": "2.5rem", "margin": "2rem", "gutter-sm": "1rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-sm": "1rem", "space-lg": "1.5rem" }, "fontFamily": { "headline-xl-mobile": [ "Plus Jakarta Sans" ], "label-caps": [ "Plus Jakarta Sans" ], "headline-lg": [ "Plus Jakarta Sans" ], "label-code-sm": [ "JetBrains Mono" ], "body-md": [ "Inter" ], "headline-xl": [ "Plus Jakarta Sans" ], "headline-md": [ "Plus Jakarta Sans" ], "body-lg": [ "Inter" ], "headline-sm": [ "Plus Jakarta Sans" ], "body-sm": [ "Inter" ], "headline-lg-mobile": [ "Plus Jakarta Sans" ], "label-code-md": [ "JetBrains Mono" ] }, "fontSize": { "headline-xl-mobile": [ "30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700" } ], "label-caps": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.06em", "fontWeight": "700" } ], "headline-lg": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-code-sm": [ "11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "body-md": [ "14px", { "lineHeight": "22px", "fontWeight": "400" } ], "headline-xl": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-md": [ "22px", { "lineHeight": "30px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "26px", "fontWeight": "400" } ], "headline-sm": [ "18px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "body-sm": [ "12px", { "lineHeight": "18px", "fontWeight": "400" } ], "headline-lg-mobile": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "label-code-md": [ "13px", { "lineHeight": "20px", "fontWeight": "500" } ] } } } };</script></head><body class="bg-surface text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between p-space-md"><div class="flex flex-col gap-space-md"><div class="flex items-center gap-space-sm px-space-xs pt-space-xs"><img alt="DevTrail AI Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Weapzbt6PTIr7EJgiDtkFZ2v7kQmvqHm1yK0PBRrXmYyw_yBWbFBX9nGukEM71-xNdL0JaLGXNC1olNrC6n4RhxJ-t3qxLT1cUnEKJGCd8b4Goj9N-OGJOfoJ5W9p5n905EgrYu61nl735SwbIIqo421jOw2XJn40tJmUMQlydRvA5TzFgwkiXfknwkWi0BTPB3zlxALvlKLDKYWs-i-_uoQDF-Gb1_CqsrlRVXLXI_PjRZ7eixjqDpUA"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface leading-none">DevTrail AI</span><span class="font-label-caps text-label-caps uppercase text-secondary font-bold tracking-wider mt-1">Curriculum Navigator</span></div></div><div class="h-px bg-surface-container-high w-full my-space-xs"></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-semibold shadow-sm"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all bg-primary-container text-on-primary font-semibold shadow-sm" data-path="learning-roadmap" href="#"><span class="material-symbols-outlined text-[20px]">alt_route</span><span class="font-body-md text-body-md">Learning Roadmap</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="chapter-detail" href="#"><span class="material-symbols-outlined text-[20px]">code_blocks</span><span class="font-body-md text-body-md">Chapter Detail</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="ai-labs" href="#"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-[20px]">smart_toy</span><span class="font-body-md text-body-md">AI Labs</span></div><span class="font-label-code-sm text-label-code-sm px-space-xs py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-medium">10 Labs</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" data-path="my-progress-and-settings" href="#"><span class="material-symbols-outlined text-[20px]">tune</span><span class="font-body-md text-body-md">My Progress &amp; Settings</span></a></nav></div><div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-space-sm shadow-[0_1px_3px_rgba(15,23,42,0.04)]"><div class="flex items-center justify-between"><span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-bold">Current Target</span><span class="font-label-code-sm text-label-code-sm font-semibold text-primary">62%</span></div><div class="font-body-sm text-body-sm font-semibold text-on-surface">Node G: Capstone Project</div><div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden"><div class="bg-primary h-full rounded-full" style="width: 62%"></div></div><a class="mt-space-xs flex items-center justify-between font-label-code-sm text-label-code-sm text-primary hover:text-on-primary-fixed-variant transition-colors" data-path="chapter-detail" href="#"><span class="truncate">Resume D: JS Fundamentals</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></aside><div class="pl-72 flex flex-col min-h-screen"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 px-space-lg flex items-center justify-between"><div class="flex items-center gap-space-md flex-1 max-w-lg"><div class="relative w-full"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full pl-9 pr-space-md py-1.5 bg-surface-container-low rounded-lg font-body-sm text-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Search concepts, chapters, or AI labs..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-1.5 px-space-sm py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full font-label-code-sm text-label-code-sm font-medium"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span>Diagnostic Mode: Active — 2 Skipped</span></div><button class="p-1.5 text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="h-4 w-px bg-surface-container-high"></div><div class="flex items-center gap-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZBrFF4DNUTDpcZ5d0AmjnnvIpjkb-jEfhqk10CjPe2Q2_VBxkZ_cJ2a4ZI3VI2jyPhYu0sOTRRCZpFjR39l6hEsnT72ho5iT6-sIqZc_YZGB0YpJZSeWCZDHTElhrbPFia3BX7E1s-AvuQnU7a1Y2EuVeKH9DNQLgEpsFoAYP4idbmdYpf7DTk89Ze2m7tWZOIl1QJjr3nqzTF6LunXCoeqlcpmJ8ttIVCAPyI80Ybfn5RDRI55PA"/><div class="hidden lg:flex flex-col text-left"><span class="font-body-sm text-body-sm font-semibold text-on-surface leading-tight">Alex Rivera</span><span class="font-label-code-sm text-label-code-sm text-on-surface-variant leading-none">Track: Full-Stack Web</span></div></div></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full">
+<!-- Top Command Matrix & Algorithmic Controls -->
+<section class="w-full px-margin py-space-lg flex flex-col gap-space-md bg-surface-container-low/60 backdrop-blur-md">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col max-w-2xl">
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="font-label-caps text-label-caps uppercase text-primary font-bold tracking-wider">DAG Pathfinding Engine v2.4</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-code-sm text-label-code-sm text-secondary font-semibold">Strict Topological Sort Active</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Intelligent Curriculum Roadmap</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+          Explore the shortest dependency path from Start (Node A) to Capstone (Node G). Evaluate routing algorithms or adjust focus filters.
+        </p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="group relative flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary font-body-md text-body-md font-semibold shadow-md hover:bg-primary transition-all active:scale-[0.98]" id="recompute-btn" type="button">
+<span class="material-symbols-outlined text-[18px] group-hover:rotate-12 transition-transform">auto_awesome</span>
+<span>Find My Optimized Path</span>
+<span class="ml-1 text-[10px] font-label-code-sm bg-on-primary/20 px-1.5 py-0.5 rounded text-on-primary">⌘K</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm hover:bg-surface-container transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-outline">tune</span>
+<span>Constraints</span>
+</button>
+</div>
+</div>
+<!-- Algorithm Selector Pill Deck -->
+<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center p-1 bg-surface-container-high/60 rounded-xl max-w-fit">
+<button class="algo-tab px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" onclick="setAlgorithm('bfs', this)" type="button">
+<span class="material-symbols-outlined text-[16px]">horizontal_split</span>
+<span>BFS (Breadth-First)</span>
+<span class="hidden sm:inline font-label-code-sm text-label-code-sm text-outline">• Min Hop</span>
+</button>
+<button class="algo-tab px-space-md py-1.5 rounded-lg font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-1.5" onclick="setAlgorithm('dfs', this)" type="button">
+<span class="material-symbols-outlined text-[16px]">vertical_align_bottom</span>
+<span>DFS (Depth-First)</span>
+<span class="hidden sm:inline font-label-code-sm text-label-code-sm text-outline">• Deep Track</span>
+</button>
+<button class="algo-tab active px-space-md py-1.5 rounded-lg font-body-sm text-body-sm bg-surface-container-lowest text-primary font-semibold shadow-sm transition-all flex items-center gap-1.5" onclick="setAlgorithm('astar', this)" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">route</span>
+<span>A* Search (Cost-Weighted)</span>
+<span class="font-label-code-sm text-label-code-sm bg-primary-fixed text-on-primary-fixed-variant px-1.5 py-0.5 rounded-full font-bold">Optimal</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+<span>Acyclic Guarantee: <strong class="text-on-surface font-label-code-sm text-label-code-sm">O(V + E) Passed</strong></span>
+</div>
+</div>
+<!-- Live Telemetry Cost Bar -->
+<div class="w-full bg-surface-container-lowest rounded-xl p-space-md shadow-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md items-center">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-outline font-bold">Computed Shortest Vector</span>
+<div class="flex items-center gap-1 mt-1 font-label-code-md text-label-code-md font-semibold text-primary truncate">
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface">A</span>
+<span class="text-outline">→</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface">B</span>
+<span class="text-outline">→</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface">C</span>
+<span class="text-outline">→</span>
+<span class="px-1.5 py-0.5 rounded bg-primary-fixed text-primary font-bold">D</span>
+<span class="text-outline">→</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">E</span>
+<span class="text-outline">→</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">F</span>
+<span class="text-outline">→</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant">G</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">34 hrs</span>
+<span class="font-body-sm text-body-sm text-outline line-through">48 hrs</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-secondary font-semibold">⚡ 14 hrs prune savings (-29%)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-on-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">account_tree</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">0 Violations</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Strict DAG topological order</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">calculate</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">18.2</span>
+<span class="font-label-code-sm text-label-code-sm text-tertiary font-medium">cost unit</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">f(n) = g(n) + h(n) minimal</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filter Rails & Dynamic Legend Deck -->
+<section class="w-full px-margin py-space-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<!-- Filter Pills -->
+<div class="flex flex-wrap items-center gap-1.5">
+<button class="px-3 py-1 rounded-full bg-on-surface text-surface-container-lowest font-body-sm text-body-sm font-medium shadow-sm transition-transform active:scale-95">All Chapters (7)</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm shadow-sm transition-transform active:scale-95">Required Only (5)</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm shadow-sm transition-transform active:scale-95">Electives (2)</button>
+<button class="px-3 py-1 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm shadow-sm transition-transform active:scale-95">Mastered (3)</button>
+<button class="px-3 py-1 rounded-full bg-tertiary-fixed/60 text-on-tertiary-fixed hover:bg-tertiary-fixed font-body-sm text-body-sm transition-transform active:scale-95 flex items-center gap-1">
+<span>Needs Diagnostic (2)</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</button>
+</div>
+<!-- Node Status Legend -->
+<div class="flex flex-wrap items-center gap-3 text-on-surface-variant font-label-code-sm text-label-code-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span>Validated</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary ring-2 ring-primary/30"></span>
+<span class="font-semibold text-primary">Active Focus</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+<span>Unlocked</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[13px] text-outline">lock</span>
+<span>Locked</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[13px] text-tertiary">bolt</span>
+<span class="text-tertiary">Skippable</span>
+</div>
+</div>
+</section>
+<!-- Interactive Network Canvas & Rationale Split Workspace -->
+<div class="w-full px-margin py-space-md grid grid-cols-1 xl:grid-cols-12 gap-gutter items-start">
+<!-- Primary Dependency Network Canvas (8 Columns on xl) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg relative">
+<!-- Ambient Graph Canvas Background Grid -->
+<div class="relative w-full rounded-2xl bg-surface-container-lowest shadow-sm p-space-md lg:p-space-xl overflow-hidden">
+<!-- SVG Connecting DAG Cables -->
+<svg class="pointer-events-none absolute inset-0 w-full h-full opacity-40 z-0" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="activeGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#006a61"></stop>
+<stop offset="50%" stop-color="#3525cd"></stop>
+<stop offset="100%" stop-color="#777587"></stop>
+</lineargradient>
+<pattern height="24" id="dotPattern" patternunits="userSpaceOnUse" width="24" x="0" y="0">
+<circle cx="2" cy="2" fill="#c7c4d8" r="1.2"></circle>
+</pattern>
+</defs>
+<rect fill="url(#dotPattern)" height="100%" width="100%"></rect>
+<!-- Spine Curve A to B to C to D -->
+<path d="M 120 70 C 120 130, 200 130, 200 190" fill="none" stroke="#006a61" stroke-dasharray="4 2" stroke-width="2.5"></path>
+<path d="M 200 240 C 200 290, 160 300, 160 360" fill="none" stroke="#006a61" stroke-width="2.5"></path>
+<path d="M 160 410 C 160 470, 260 470, 260 530" fill="none" stroke="#3525cd" stroke-width="3"></path>
+<!-- Branch to Opt-2 from C -->
+<path d="M 280 380 C 440 380, 470 380, 520 380" fill="none" stroke="#c7c4d8" stroke-dasharray="3 3" stroke-width="2"></path>
+<!-- Branch D to E -->
+<path d="M 260 580 C 260 640, 200 660, 200 710" fill="none" stroke="#777587" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- Branch D to Opt-1 -->
+<path d="M 400 550 C 500 550, 520 540, 540 540" fill="none" stroke="#c7c4d8" stroke-dasharray="3 3" stroke-width="2"></path>
+<!-- Converge E + D into F -->
+<path d="M 200 760 C 200 810, 280 820, 280 870" fill="none" stroke="#c7c4d8" stroke-dasharray="4 4" stroke-width="2"></path>
+<!-- F to Final Goal G -->
+<path d="M 280 920 C 280 980, 280 990, 280 1040" fill="none" stroke="#c7c4d8" stroke-dasharray="4 4" stroke-width="2"></path>
+</svg>
+<div class="relative z-10 flex flex-col gap-space-xl">
+<!-- STAGE 1: Foundations -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-outline uppercase tracking-widest">
+<span>Tier 1 • Foundations &amp; Document Anatomy</span>
+<span class="h-px bg-surface-container-high flex-1"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<!-- Node A -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-lg bg-secondary text-on-secondary font-label-code-sm text-label-code-sm font-bold flex items-center justify-center">A</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Web Foundations &amp; Semantic HTML</span>
+</div>
+<span class="flex items-center gap-1 font-label-code-sm text-label-code-sm bg-secondary-container text-on-secondary-container px-2.5 py-0.5 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>Diagnostic Test Passed (15 min)</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Mastery over DOM accessibility primitives, doctype definitions, form sanitization, and SEO head vectors.
+                </p>
+<div class="flex items-center justify-between pt-space-xs">
+<div class="flex items-center gap-space-sm text-on-surface-variant font-label-code-sm text-label-code-sm">
+<span>Prereqs: None (Root)</span>
+<span>•</span>
+<span class="text-secondary font-semibold">4.0 hrs skipped</span>
+</div>
+<button class="text-primary font-body-sm text-body-sm font-semibold hover:underline flex items-center gap-0.5" type="button">
+<span>Review Test</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- STAGE 2: Presentation & Cascade -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-outline uppercase tracking-widest">
+<span>Tier 2 • Box Model &amp; Responsive Systems</span>
+<span class="h-px bg-surface-container-high flex-1"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-start">
+<!-- Node B -->
+<div class="md:col-span-6 bg-surface-container-low rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-lg bg-secondary text-on-secondary font-label-code-sm text-label-code-sm font-bold flex items-center justify-center">B</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">CSS Fundamentals</span>
+</div>
+<span class="flex items-center gap-1 font-label-code-sm text-label-code-sm bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-medium">
+<span class="material-symbols-outlined text-[14px]">check</span>
+<span>100% Done</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Specificity calculations, modern Cascade layers, custom properties, and box-sizing physics.
+                </p>
+<div class="flex items-center justify-between pt-space-xs font-label-code-sm text-label-code-sm text-outline">
+<span>Prereq: Node A</span>
+<span>5.0 hrs total</span>
+</div>
+</div>
+<!-- Node C -->
+<div class="md:col-span-6 bg-surface-container-low rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-lg bg-secondary text-on-secondary font-label-code-sm text-label-code-sm font-bold flex items-center justify-center">C</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Responsive &amp; Grid</span>
+</div>
+<span class="flex items-center gap-1 font-label-code-sm text-label-code-sm bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-medium">
+<span class="material-symbols-outlined text-[14px]">check</span>
+<span>Completed</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Fluid typography, subgrid orchestration, flexbox alignment axioms, and container queries.
+                </p>
+<div class="flex items-center justify-between pt-space-xs font-label-code-sm text-label-code-sm text-outline">
+<span>Prereq: Node B</span>
+<span>6.5 hrs total</span>
+</div>
+</div>
+</div>
+<!-- Elective Branch Off C -->
+<div class="flex justify-end pr-space-md">
+<div class="w-full md:w-5/12 bg-surface-container rounded-xl p-space-sm shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-code-sm text-label-code-sm font-bold px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface">Opt-2</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">UI Motion &amp; SVG Animation</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">Elective Branch • 3.5 hrs</span>
+</div>
+</div>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded">Optional</span>
+</div>
+</div>
+</div>
+<!-- STAGE 3: Computational Core (ACTIVE NODE) -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-primary uppercase tracking-widest font-bold">
+<span>Tier 3 • Imperative Logic &amp; Runtime Architecture</span>
+<span class="h-px bg-primary/20 flex-1"></span>
+</div>
+<!-- NODE D: Current Active Node Card (Prominent & High Craft) -->
+<div class="relative bg-surface-container-lowest rounded-2xl p-space-lg shadow-xl ring-2 ring-primary/40 flex flex-col gap-space-md overflow-hidden">
+<!-- Glow accent background -->
+<div class="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm z-10">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center shadow-md">
+                    D
+                  </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">JavaScript Fundamentals</span>
+<span class="inline-flex items-center gap-1 font-label-caps text-label-caps uppercase bg-primary text-on-primary px-2.5 py-0.5 rounded-full font-bold animate-pulse">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest"></span>
+                        Current Focus
+                      </span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-primary font-semibold">Priority Queue Target #1 • f(n) = 18.2 optimal cost</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex flex-col text-right">
+<span class="font-label-code-sm text-label-code-sm font-bold text-on-surface">65% Completed</span>
+<span class="font-body-sm text-body-sm text-outline">13 of 20 concepts</span>
+</div>
+<div class="w-24 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 65%;"></div>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface z-10 max-w-3xl">
+                Execution contexts, lexical scoping, closures, prototypal chains, and microtask queue mechanics. Node D unlocks downstream state machines.
+              </p>
+<!-- Node D Interactive Sub-tasks and Actions -->
+<div class="bg-surface-container-low rounded-xl p-space-md z-10 flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-1.5 font-label-code-sm text-label-code-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Closures &amp; Scope</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-code-sm text-label-code-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Event Loop Basics</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-code-sm text-label-code-sm text-primary font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span>Active: Async/Await &amp; Microtasks</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs w-full md:w-auto">
+<a class="w-full md:w-auto text-center px-space-md py-2 rounded-lg bg-primary text-on-primary font-body-sm text-body-sm font-semibold hover:bg-on-primary-fixed-variant transition-all shadow-sm" data-path="chapter-detail" href="#">
+                    Resume Studio
+                  </a>
+<button class="px-space-md py-2 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed font-body-sm text-body-sm font-semibold hover:bg-tertiary-fixed-dim transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Test Out Remaining 35%</span>
+</button>
+</div>
+</div>
+<div class="flex items-center justify-between pt-1 z-10 font-label-code-sm text-label-code-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">link</span>
+<span>Prerequisites Met: Node B, Node C</span>
+</span>
+<span>Time Remaining: ~2.5 hrs</span>
+</div>
+</div>
+<!-- Elective Branch Off D -->
+<div class="flex justify-end pr-space-md">
+<div class="w-full md:w-5/12 bg-surface-container rounded-xl p-space-sm shadow-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-code-sm text-label-code-sm font-bold px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface">Opt-1</span>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">TypeScript Generics &amp; Types</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">Branch off Node D • 4.0 hrs</span>
+</div>
+</div>
+<span class="font-label-code-sm text-label-code-sm bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded">Optional</span>
+</div>
+</div>
+</div>
+<!-- STAGE 4: Browser Engine Integration -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-outline uppercase tracking-widest">
+<span>Tier 4 • DOM Synthesis &amp; Application Shell</span>
+<span class="h-px bg-surface-container-high flex-1"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-start">
+<!-- Node E -->
+<div class="md:col-span-6 bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col gap-space-xs ring-1 ring-outline-variant/30">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-lg bg-surface-container-highest text-on-surface font-label-code-sm text-label-code-sm font-bold flex items-center justify-center">E</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">DOM, Events &amp; Web APIs</span>
+</div>
+<span class="flex items-center gap-1 font-label-code-sm text-label-code-sm bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full font-medium">
+<span class="material-symbols-outlined text-[14px]">lock_open</span>
+<span>Ready Next</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Event delegation, fetch pipelines, IntersectionObserver, and client-side web storage mechanisms.
+                </p>
+<div class="flex items-center justify-between pt-space-xs font-label-code-sm text-label-code-sm text-outline">
+<span>Prereq: Node D (Requires 100%)</span>
+<span>Est: 5.0 hrs</span>
+</div>
+</div>
+<!-- Node F -->
+<div class="md:col-span-6 bg-surface-container/60 rounded-xl p-space-md opacity-80 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-7 h-7 rounded-lg bg-surface-container-highest text-outline font-label-code-sm text-label-code-sm font-bold flex items-center justify-center">F</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Git, React &amp; State</span>
+</div>
+<span class="flex items-center gap-1 font-label-code-sm text-label-code-sm bg-surface-container-high text-outline px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Locked</span>
+</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Component lifecycles, reactivity reconciliation, Git branch topologies, and unified global store.
+                </p>
+<div class="flex items-center justify-between pt-space-xs font-label-code-sm text-label-code-sm text-outline">
+<span>Prereqs: Node D + Node E</span>
+<span>Est: 11.0 hrs</span>
+</div>
+</div>
+</div>
+</div>
+<!-- STAGE 5: Capstone Destination (Goal State) -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-secondary uppercase tracking-widest font-bold">
+<span>Tier 5 • Final Assessment Destination</span>
+<span class="h-px bg-secondary/30 flex-1"></span>
+</div>
+<!-- Node G Goal State -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-lg shadow-md flex flex-col gap-space-sm ring-1 ring-secondary/30">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed text-on-secondary-fixed font-headline-sm text-headline-sm font-bold flex items-center justify-center">
+                    G
+                  </div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Capstone: Enterprise Full-Stack Web Application</h2>
+<span class="font-label-code-sm text-label-code-sm text-secondary font-semibold">Terminal Target • Capstone Production Deployment</span>
+</div>
+</div>
+<span class="flex items-center gap-1 font-label-code-sm text-label-code-sm bg-surface-container text-outline px-3 py-1 rounded-full font-medium">
+<span class="material-symbols-outlined text-[15px]">flag</span>
+<span>Requires Nodes A thru F</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                Build and deploy a full-stack, authenticated distributed dashboard with real-time WebSocket state, automated CI/CD pipeline, and 95+ Lighthouse telemetry performance score.
+              </p>
+<div class="flex items-center justify-between pt-space-xs font-label-code-sm text-label-code-sm text-on-surface-variant">
+<span>Weighted Capstone Credit: 100 points</span>
+<span class="text-secondary font-semibold">Estimated 10 hrs sprint</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Algorithm Rationale & Inspector Panel (4 Columns on xl) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md">
+<!-- Real-time A* Path Decision Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">psychology</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Why A* Selected Node D</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm bg-primary-fixed text-primary px-2 py-0.5 rounded font-semibold">Active Solver</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          DevTrail evaluated 3 candidate exploration vectors against your current diagnostic profile and skill mastery map:
+        </p>
+<!-- Path comparison breakdowns -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm font-semibold text-on-surface">Path 1: Retake JavaScript Basics</span>
+<span class="font-label-code-sm text-label-code-sm text-error font-medium">+6.0h (Rejected)</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">f(n) penalty too steep; zero marginal heuristic improvement.</span>
+</div>
+<div class="p-space-sm rounded-lg bg-primary-fixed/40 ring-1 ring-primary/30 flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm font-bold text-primary">Path 2: Diagnostic Fast-Track (Active)</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary font-bold">-14.0h (Selected)</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface">Prunes 6 redundant lessons; directs cognitive focus immediately to Async JavaScript.</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm font-semibold text-on-surface">Path 3: Direct Jump to React (Node F)</span>
+<span class="font-label-code-sm text-label-code-sm text-error font-medium">Infeasible</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">DAG Hard Dependency Violation: Missing DOM APIs (Node E).</span>
+</div>
+</div>
+<!-- Algorithm Code Console Inspection -->
+<div class="mt-space-xs flex flex-col rounded-xl overflow-hidden shadow-inner bg-[#090d16] text-[#e2e8ff] p-space-sm font-label-code-sm text-label-code-sm">
+<div class="flex items-center justify-between pb-2 text-outline font-label-code-sm text-label-code-sm">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-error/80 inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary/80 inline-block"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary/80 inline-block"></span>
+<span class="ml-2 text-xs text-outline-variant">AStarPriorityQueue.ts</span>
+</div>
+<span class="text-[10px] text-secondary">eval: 2.1ms</span>
+</div>
+<pre class="overflow-x-auto text-xs leading-5"><code><span class="text-[#818cf8]">const</span> frontier = <span class="text-[#818cf8]">new</span> <span class="text-[#38bdf8]">MinPriorityQueue</span>();
+
+<span class="text-[#94a3b8]">// g(Node_D) = 8.2h accumulated cost</span>
+<span class="text-[#94a3b8]">// h(Node_D) = 10.0h Euclidean heuristic to Capstone</span>
+frontier.<span class="text-[#34d399]">push</span>(Node_D, { 
+  f_cost: <span class="text-[#fbbf24]">18.2</span>, 
+  skillsPruned: [<span class="text-[#a78bfa]">'loops'</span>, <span class="text-[#a78bfa]">'arrays'</span>] 
+});
+
+<span class="text-[#818cf8]">const</span> nextFocus = frontier.<span class="text-[#34d399]">pop</span>();
+<span class="text-[#38bdf8]">console</span>.<span class="text-[#34d399]">log</span>(<span class="text-[#a78bfa]">`Optimal target: <span class="text-[#38bdf8]">${nextFocus.id}</span>`</span>);</code></pre>
+</div>
+</div>
+<!-- Quick Interactive Diagnostic Readiness Drawer -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-[20px]">bolt</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Available Diagnostic Skips</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Take a 12-question calibrated assessment to validate knowledge and skip ahead on the graph:
+        </p>
+<div class="flex flex-col gap-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Node D: Async &amp; Promises</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">Save ~2.5 hours</span>
+</div>
+<button class="px-2.5 py-1 rounded-md bg-tertiary text-on-tertiary font-label-code-sm text-label-code-sm font-medium hover:bg-tertiary-container transition-all" type="button">
+              Start Test
+            </button>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface">Node E: DOM Manipulation</span>
+<span class="font-label-code-sm text-label-code-sm text-outline">Save ~3.0 hours</span>
+</div>
+<button class="px-2.5 py-1 rounded-md bg-surface-container-high text-on-surface-variant font-label-code-sm text-label-code-sm font-medium hover:bg-surface-container-highest transition-all" type="button">
+              Preview
+            </button>
+</div>
+</div>
+</div>
+<!-- Curriculum Track Master Stats Mini-card -->
+<div class="bg-surface-container-high/40 rounded-2xl p-space-md flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase text-outline font-bold">Track Overall Velocity</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Top 12% Cadence</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary font-medium">Capstome eta: 14 days</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">speed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function setAlgorithm(type, el) {
+    document.querySelectorAll('.algo-tab').forEach(btn => {
+      btn.classList.remove('bg-surface-container-lowest', 'text-primary', 'font-semibold', 'shadow-sm');
+      btn.classList.add('text-on-surface-variant');
+    });
+    el.classList.remove('text-on-surface-variant');
+    el.classList.add('bg-surface-container-lowest', 'text-primary', 'font-semibold', 'shadow-sm');
+  }
+
+  document.getElementById('recompute-btn')?.addEventListener('click', function() {
+    const icon = this.querySelector('.material-symbols-outlined');
+    if (icon) {
+      icon.classList.add('animate-spin');
+      setTimeout(() => {
+        icon.classList.remove('animate-spin');
+      }, 700);
+    }
+  });
+</script></main></div></body></html>
